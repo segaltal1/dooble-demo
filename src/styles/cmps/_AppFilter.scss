@@ -1,0 +1,13 @@
+.app-filter {
+    position: relative;
+    label {
+        color: whitesmoke !important;
+    }
+    .MuiInputBase-root {
+        color: white !important;
+    }
+    .icon-clear {
+        position: absolute;
+        left: 180px;
+    }
+}

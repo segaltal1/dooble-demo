@@ -1,0 +1,12 @@
+.character-list {
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid grey;
+    .title-container {
+        padding-bottom: 1rem;
+        font-size: 1.1rem;
+        img{
+            height: 30px;
+            width: 30px;
+        }
+    }
+}

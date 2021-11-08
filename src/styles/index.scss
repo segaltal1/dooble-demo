@@ -1,0 +1,15 @@
+// BASIC
+@import "./variables.scss";
+@import "./base.scss";
+@import "./helpers.scss";
+@import "./mixins.scss";
+
+// MAIN
+@import "./app.scss";
+
+//CMPS
+@import "./cmps/AppHeader";
+@import "./cmps/AppFilter";
+@import "./cmps/AppBoard";
+@import "./cmps/CharacterList";
+@import "./cmps/CharacterPreview";

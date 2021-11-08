@@ -1,0 +1,40 @@
+.character-info {
+    padding: 5px;
+    border-radius: 5px;
+    transition: 0.2s ease-in-out;
+    &:hover {
+        background-color: #00000024;
+    }
+    &.marked {
+        background: #ffd7000f;
+    }
+    & > * {
+        flex-basis: 22%;
+        text-align: end;
+    }
+    span {
+        &.red {
+            color: red;
+        }
+        &.green {
+            color: green;
+        }
+    }
+
+    .asset {
+        text-align: inherit;
+    }
+
+    .star-svg {
+        text-align: end;
+        cursor: pointer;
+        display: flex;
+        justify-content: flex-end;
+        height: 1rem;
+        width: 1rem;
+        filter: brightness(1) contrast(0);
+        &.marked {
+            filter: unset;
+        }
+    }
+}
