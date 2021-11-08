@@ -1,18 +1,16 @@
 import { Clear } from '@material-ui/icons'
 import { IconButton, TextField } from '@material-ui/core'
 
-export const AppFilter = () => {
-
-    const onSetFilter = ({ target }) => {
-    }
-
+export const AppFilter = ({ onSetFilter, filterBy }) => {
+   
     return (
         <section className="app-filter flex align-center">
             <TextField
                 id="field-basic"
                 label="Search"
                 variant="outlined"
-                value={''}
+                name="name"
+                value={filterBy?.name}
                 style={{
                     backgroundColor: "navy",
                     color: "white",

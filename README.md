@@ -1,10 +1,9 @@
-# Enigma securities project
+# Dooble project
 <br/>
-A subset demo for Enigma securities.
+A subset demo for Dooble company.
 
 The app was written as part of an interview assignment.
 
-<img src="https://i.im.ge/2021/11/04/oNk3u1.jpg" alt="oNk3u1.jpg">
 
 ## Project setup
 ```
