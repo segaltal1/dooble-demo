@@ -1,5 +1,5 @@
 import { AppBoard } from './cmps/AppBoard';
-import { WatchList } from './pages/WatchList';
+import { ChartList } from './pages/ChartList';
 
 const routes = [
     {
@@ -7,14 +7,9 @@ const routes = [
         component: AppBoard,
     },
     {
-        path: '/watchlist',
-        component: WatchList,
+        path: '/charts',
+        component: ChartList,
     },
-    {
-        path: '/:kraken',
-        component: AppBoard,
-    },
-
 ]
 
 export default routes;

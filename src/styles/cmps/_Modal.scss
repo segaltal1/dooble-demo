@@ -1,0 +1,13 @@
+.modal-data {
+    img {
+        object-fit: cover;
+        height: 300px;
+    }
+    h2 {
+        padding: 0.5rem;
+    }
+    span {
+        padding: 0.5rem;
+        border-bottom: 1px solid $mainColor;
+    }
+}

@@ -3,8 +3,6 @@ import { AppHeader } from './cmps/AppHeader';
 import routes from './routes.js'
 
 export function App() {
-
-
   return (
     <section className="app flex column gap">
       <AppHeader />

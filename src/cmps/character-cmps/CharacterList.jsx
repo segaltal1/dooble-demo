@@ -1,9 +1,10 @@
-import { memo, useMemo } from 'react';
+import { memo } from 'react';
 import { CharacterPreview } from './CharacterPreview';
 
-export const CharacterList = memo(function _CharacterList({ characters, onToggleModal, onSelectedCharcter }) {
-
-
+export const CharacterList = memo(function _CharacterList({
+    characters,
+    onToggleModal,
+    onSelectedCharcter }) {
 
     return (
         <section className="character-list flex column">
@@ -18,14 +19,6 @@ export const CharacterList = memo(function _CharacterList({ characters, onToggle
                 <CharacterPreview key={character.id}
                     character={character} onToggleModal={onToggleModal} onSelectedCharcter={onSelectedCharcter} />
             ))}
-            {/* <div className="title-container flex alig-center gap">
-                <img src={imgSrcg} alt="icon" />
-                <h2 className="title">{title}</h2>
-            </div>
-            {characters.length > 0 && characters.map(character => <CharacterInfo
-                key={character.asset}
-                character={character}
-            />)} */}
         </section>
     )
 })

@@ -8,26 +8,19 @@ import { BasicModal } from "./Modal"
 
 export const AppBoard = () => {
     const [characters, setCharcters] = useState(null)
-    const [page, setPage] = useState(1)
-    const [isOpenModal, setOpenModal] = useState(false);
     const [selectedCharcter, setSelectedCharcter] = useState(null)
-
+    const [page, setPage] = useState(1)
     const [filterBy, setFilterBy] = useState({
         name: '',
         gender: '',
         status: ''
     })
 
-    const onToggleModal = () => {
-        setOpenModal((prevState) => !prevState)
-    }
-
     const onSelectedCharcter = (selectedCharcter) => {
         setSelectedCharcter(selectedCharcter)
     }
 
     const onSetFilter = ({ target }) => {
-        console.log('setting filter');
         const { name, value } = target
         setFilterBy(prevFilter => ({ ...prevFilter, [name]: value }))
     }
@@ -72,22 +65,31 @@ export const AppBoard = () => {
         loadCharacters(page)
     }, [page])
 
-    if (!characters) return <h1>Loading</h1>
+    if (!characters.length) return <h1>Loading</h1>
     return (
         <section className="app-board flex column gap">
-            <AppFilter onSetFilter={onSetFilter} clearFilter={clearFilter} filterBy={filterBy} />
+            <AppFilter
+                onSetFilter={onSetFilter}
+                clearFilter={clearFilter}
+                filterBy={filterBy} />
             {
-                characters?.length > 0 ?
+                charactersToDisaply?.length > 0 ?
                     <>
-                        <CharacterList characters={charactersToDisaply} onSelectedCharcter={onSelectedCharcter} onToggleModal={onToggleModal} />
-                        <Pagination count={databaseService.getPageCount()} page={page} onChange={onSetPage} />
+                        <CharacterList
+                            characters={charactersToDisaply}
+                            onSelectedCharcter={onSelectedCharcter} />
+                        <Pagination
+                            count={databaseService.getPageCount()}
+                            page={page}
+                            onChange={onSetPage} />
 
                     </>
                     : <h1>No Characters founds</h1>
             }
 
-            <BasicModal onToggleModal={onToggleModal} isOpen={isOpenModal}
-                onSelectedCharcter={onSelectedCharcter} selectedCharcter={selectedCharcter} />
+            <BasicModal
+                onSelectedCharcter={onSelectedCharcter}
+                selectedCharcter={selectedCharcter} />
         </section>
     )
 }

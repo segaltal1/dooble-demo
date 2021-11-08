@@ -1,5 +1,5 @@
-import { Box, Modal, Typography } from "@material-ui/core";
 import { useEffect, useState } from "react";
+import { Box, Modal } from "@material-ui/core";
 import { databaseService } from "../services/database.service";
 
 const style = {
@@ -7,29 +7,28 @@ const style = {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 400,
+    width: 500,
     bgcolor: 'background.paper',
-    border: '2px solid #000',
     boxShadow: 24,
-    p: 4,
 };
 
 export const BasicModal = ({
-    isOpen,
-    onToggleModal,
     onSelectedCharcter,
     selectedCharcter }) => {
 
-    // const { name, image, first, last } = selectedCharcter
-    const getEpisode = async (firstUrl, lastUrl) => {
-        const res = await databaseService.fetchEpisodes(firstUrl, lastUrl)
-        console.log("🚀 ~ getEpisode ~ res", res)
-        return 'test'
+    const [episodes, setEpisodes] = useState([])
+
+    const getEpisodes = async (firstUrl, lastUrl) => {
+        const episodes = await databaseService.fetchEpisodes(firstUrl, lastUrl)
+        setEpisodes(episodes)
     }
 
     useEffect(() => {
-        getEpisode(selectedCharcter?.first, selectedCharcter?.last)
-    }, [])
+        if (selectedCharcter) {
+            getEpisodes(selectedCharcter?.first, selectedCharcter?.last)
+        }
+    }, [selectedCharcter])
+
     return (
         <div>
             <Modal
@@ -38,12 +37,16 @@ export const BasicModal = ({
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description">
                 <Box sx={style}>
-                    <img src={selectedCharcter?.image} alt={selectedCharcter?.name} />
-                    <h2>{selectedCharcter?.name}</h2>
-                    <span>First Episode:{getEpisode(selectedCharcter?.first)}</span>
-                    <span>Last Episode:{getEpisode(selectedCharcter?.last)}</span>
+                    <section className="modal-data flex column   gap">
+                        <img src={selectedCharcter?.image} alt={selectedCharcter?.name} />
+                        <h2>{selectedCharcter?.name}</h2>
+                        {episodes.length > 0 && <>
+                            <span>First Episode: {episodes[0]}</span>
+                            <span>Last Episode: {episodes[1]}</span>
+                        </>}
+                    </section>
                 </Box>
             </Modal>
-        </div>
+        </div >
     );
 }

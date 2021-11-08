@@ -1,5 +1,11 @@
-import { Clear } from "@material-ui/icons"
-import { FormControl, IconButton, InputLabel, MenuItem, Select, TextField } from '@material-ui/core'
+import {
+    FormControl,
+    IconButton,
+    InputLabel,
+    MenuItem,
+    Select,
+    TextField
+} from '@material-ui/core'
 
 export const AppFilter = ({ onSetFilter, filterBy, clearFilter }) => {
 
@@ -20,7 +26,7 @@ export const AppFilter = ({ onSetFilter, filterBy, clearFilter }) => {
                     }}
                     onChange={onSetFilter}
                 />
-              
+
             </div>
             <div className="search-selections flex align-center gap">
 
@@ -70,7 +76,7 @@ export const AppFilter = ({ onSetFilter, filterBy, clearFilter }) => {
                         <MenuItem value={'unknown'}>Unknown</MenuItem>
                     </Select>
                 </FormControl>
-                  <IconButton
+                <IconButton
                     className="icon-clear"
                     onClick={clearFilter}
                     name="clear"
@@ -83,8 +89,7 @@ export const AppFilter = ({ onSetFilter, filterBy, clearFilter }) => {
                         textTransform: "uppercase"
                     }}
                     aria-label="clear search"
-                    component="span"
-                >
+                    component="span">
                     Clear All
                 </IconButton>
 
