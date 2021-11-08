@@ -1,8 +1,8 @@
 .app-header {
-    .btn-navs {
-        padding-block: 1rem;
-    }
-    .MuiButton-label {
-        text-transform: capitalize !important;
+    padding-block: 1rem;
+    color: $mainColor;
+    background-color: $blueClr;
+    h1 {
+        font-weight: 100;
     }
 }

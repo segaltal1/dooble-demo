@@ -6,7 +6,7 @@ export function App() {
 
 
   return (
-    <section className="app flex column">
+    <section className="app flex column gap">
       <AppHeader />
       <main className="main-layout">
         <Switch>

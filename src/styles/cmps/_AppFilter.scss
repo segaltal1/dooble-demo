@@ -1,13 +1,11 @@
 .app-filter {
-    position: relative;
-    label {
-        color: whitesmoke !important;
+    .search-filter {
+        flex: 1;
+        gap: 10px;
     }
-    .MuiInputBase-root {
-        color: white !important;
-    }
-    .icon-clear {
-        position: absolute;
-        left: 180px;
+    .search-selections {
+        .MuiInputLabel-animated {
+            padding-inline-start: 10px;
+        }
     }
 }

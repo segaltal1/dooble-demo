@@ -1,13 +1,15 @@
 .character-list {
     padding-top: 0.5rem;
+    overflow: auto;
+    max-height: 80vh;
     .character-list-head {
-        border-bottom:  1px solid lightgray;
-        padding-inline-start: 3rem;
+        border-bottom: 1px solid lightgray;
+        padding-inline-start: 4rem;
         padding-bottom: 1rem;
         & > * {
             flex-basis: 20%;
         }
-        span{
+        span {
             text-transform: capitalize;
             font-weight: 600;
             font-size: 1.2rem;
