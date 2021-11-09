@@ -4,15 +4,7 @@ const BASE_URL = 'https://rickandmortyapi.com/api/character?page=';
 
 let PAGES_COUNT;
 
-async function query() {
-    PAGES_COUNT = gDatabase.info.pages
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            resolve(gDatabase.results);
-        }, 1000);
-    });
 
-}
 
 function getPageCount() {
     return PAGES_COUNT
@@ -30,15 +22,27 @@ async function fetchEpisodes(firstUrl, lastUrl) {
 
 }
 
-// async function query(page = 1) {
-//     try {
-//         const { data } = await axios.get(BASE_URL + page)
-//         PAGES_COUNT = data.info.pages
-//         return data.results;
+async function query(page = 1) {
+    try {
+        const { data } = await axios.get(BASE_URL + page)
+        PAGES_COUNT = data.info.pages
+        return data.results;
 
-//     } catch (error) {
-//         console.log(error);
-//     }
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+
+//Query for development for non-blocking api
+
+// async function query() {
+//     PAGES_COUNT = gDatabase.info.pages
+//     return new Promise((resolve, reject) => {
+//         setTimeout(() => {
+//             resolve(gDatabase.results);
+//         }, 1000);
+//     });
 // }
 
 export const databaseService = {

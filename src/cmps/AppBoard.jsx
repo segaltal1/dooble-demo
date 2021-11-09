@@ -91,7 +91,7 @@ export const AppBoard = ({ view }) => {
                             onChange={onSetPage} />
 
                     </>
-                    : <h1>No Characters founds</h1>
+                    : <h1 style={{ textAlign: 'center' }}>No Characters found!</h1>
             }
 
             <BasicModal

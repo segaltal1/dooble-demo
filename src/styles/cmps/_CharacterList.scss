@@ -1,5 +1,5 @@
 .character-list {
-    padding-top: 0.5rem;
+    // padding-top: 0.5rem;
     overflow: auto;
     max-height: 70vh;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
@@ -9,20 +9,40 @@
 
     &.cards {
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         gap: 1rem;
-        span.gender::before{
-            content: "Gender :";
-        }
 
+        span {
+            font-size: 1rem;
+            max-width: unset;
+        }
+        span.gender,
+        span.origin {
+            display: none;
+        }
+        span.name {
+            font-size: 1.4rem;
+            font-weight: 800;
+        }
+        span.status::before {
+            content: "Status: ";
+            font-weight: 600;
+        }
+        span.species::before {
+            font-weight: 600;
+            content: "Species: ";
+        }
     }
     .character-list-head {
-        border-bottom: 1px solid lightgray;
         padding: 1rem;
         display: grid;
         grid-template-columns: 50px 1fr 1fr 1fr 1fr 1fr;
         align-items: center;
         gap: 10px;
+        position: sticky;
+        top: 0;
+        background-color: darken($mainColor, 10);
+        box-shadow: rgba(149, 157, 165, 0.2) 0px 6px 24px;
         @include for-mobile-layout {
             padding: 0.5rem;
             grid-template-columns: 25px 1fr 1fr 1fr 1fr 1fr;
@@ -34,50 +54,5 @@
                 font-size: 0.6rem;
             }
         }
-
-        //-----CARDS VIEW-----
-        //for cards
-        display: none;
     }
-}
-
-// scroll-bar:
-::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
-    @include for-mobile-layout {
-        width: 5px;
-        height: 5px;
-    }
-    // margin-left: 20px;
-}
-
-::-webkit-scrollbar-button {
-    width: 0px;
-    height: 0px;
-}
-
-::-webkit-scrollbar-thumb {
-    background: #666666;
-    border: 0px none #ffffff;
-    border-radius: 48px;
-    &:active {
-        background: #c4c4c4;
-    }
-}
-
-::-webkit-scrollbar-track {
-    background: #e1e1e1;
-    border: 0px none #ffffff;
-    border-radius: 43px;
-    &:hover {
-        background: lighten(#666666, 30);
-    }
-    &:active {
-        background: #333333;
-    }
-}
-
-::-webkit-scrollbar-corner {
-    background: transparent;
 }

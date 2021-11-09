@@ -1,7 +1,11 @@
-import { useMemo, useState } from "react";
+import { useContext, useMemo } from "react";
+import { Context } from "../../App";
 
 export const CharacterPreview = ({ character, onToggleModal, onSelectedCharcter }) => {
     const { name, origin, status, species, gender, image, episode } = character
+
+    const view = useContext(Context);
+
 
     const getSelectedCharcter = useMemo(() => {
         const [first] = episode
@@ -16,7 +20,7 @@ export const CharacterPreview = ({ character, onToggleModal, onSelectedCharcter 
     }, [character]);
 
     return (
-        <section className="character-preview cards"
+        <section className={`character-preview  ${view ? 'cards' : ''}`}
             onClick={() => {
                 onSelectedCharcter(getSelectedCharcter)
             }}>

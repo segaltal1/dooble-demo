@@ -26,3 +26,43 @@ a {
     color: inherit;
 }
 
+// scroll-bar:
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    @include for-mobile-layout {
+        width: 5px;
+        height: 5px;
+    }
+    // margin-left: 20px;
+}
+
+::-webkit-scrollbar-button {
+    width: 0px;
+    height: 0px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #666666;
+    border: 0px none #ffffff;
+    border-radius: 48px;
+    &:active {
+        background: #c4c4c4;
+    }
+}
+
+::-webkit-scrollbar-track {
+    background: #e1e1e1;
+    border: 0px none #ffffff;
+    border-radius: 43px;
+    &:hover {
+        background: lighten(#666666, 30);
+    }
+    &:active {
+        background: #333333;
+    }
+}
+
+::-webkit-scrollbar-corner {
+    background: transparent;
+}

@@ -1,14 +1,16 @@
-import { memo } from 'react';
+import { memo, useContext } from 'react';
+import { Context } from '../../App';
 import { CharacterPreview } from './CharacterPreview';
 
 export const CharacterList = memo(function _CharacterList({
     characters,
     onToggleModal,
     onSelectedCharcter }) {
+    const view = useContext(Context);
 
     return (
-        <section className="character-list cards">
-            <div className="character-list-head   align-center">
+        <section className={`character-list  ${view ? 'cards' : ''}`}>
+            {!view && <div className="character-list-head   align-center">
                 <div>&nbsp;</div>
                 <span>name</span>
                 <span>origin</span>
@@ -16,6 +18,7 @@ export const CharacterList = memo(function _CharacterList({
                 <span>species</span>
                 <span>gender</span>
             </div>
+            }
             {characters?.map(character => (
                 <CharacterPreview key={character.id}
                     character={character} onToggleModal={onToggleModal} onSelectedCharcter={onSelectedCharcter} />
