@@ -1,3 +1,9 @@
 .app-board {
     gap: 20px;
+    .MuiPagination-ul {
+        @include for-mobile-layout {
+            flex-wrap: nowrap;
+        }
+      
+    }
 }

@@ -7,8 +7,9 @@ export const CharacterList = memo(function _CharacterList({
     onSelectedCharcter }) {
 
     return (
-        <section className="character-list flex column">
-            <div className="character-list-head  flex align-center">
+        <section className="character-list cards">
+            <div className="character-list-head   align-center">
+                <div>&nbsp;</div>
                 <span>name</span>
                 <span>origin</span>
                 <span>status</span>

@@ -1,23 +1,44 @@
 .character-preview {
-    border-bottom:  1px solid lightgray;
+    border-bottom: 1px solid lightgray;
     padding: 1rem;
-    gap: 10px;
     border-radius: 5px;
     transition: 0.2s ease-in-out;
     cursor: pointer;
     padding-inline-end: 0;
+    gap: 10px;
     &:hover {
         background-color: #00000024;
     }
-    & > *:not(:first-child){
-        flex-basis: 20%;
+    display: grid;
+    grid-template-columns: 50px 1fr 1fr 1fr 1fr 1fr;
+    align-items: center;
+    @include for-mobile-layout {
+        grid-template-columns: 25px 1fr 1fr 1fr 1fr 1fr;
+        padding: 0.5rem;
+    }
+    span {
+        @include for-narrow-layout{
+            font-size: 0.8rem;
+        }
+        @include for-mobile-layout {
+            font-size: 0.5rem;
+            max-width: 7ch;
+        }
     }
 
+    &.cards {
+        grid-template-columns: 1fr;
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    }
     .character-img {
         img {
             border-radius: 50%;
             height: 2.5rem;
             width: 2.5rem;
+            @include for-mobile-layout {
+                height: 1.5rem;
+                width: 1.5rem;
+            }
         }
     }
 }

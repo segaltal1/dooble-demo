@@ -3,9 +3,15 @@ const gDatabase = require('../data/data.json');
 const BASE_URL = 'https://rickandmortyapi.com/api/character?page=';
 
 let PAGES_COUNT;
+
 async function query() {
     PAGES_COUNT = gDatabase.info.pages
-    return gDatabase.results
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve(gDatabase.results);
+        }, 1000);
+    });
+
 }
 
 function getPageCount() {
@@ -21,7 +27,9 @@ async function fetchEpisodes(firstUrl, lastUrl) {
     } catch (error) {
         console.log(error);
     }
+
 }
+
 // async function query(page = 1) {
 //     try {
 //         const { data } = await axios.get(BASE_URL + page)
@@ -36,5 +44,5 @@ async function fetchEpisodes(firstUrl, lastUrl) {
 export const databaseService = {
     query,
     getPageCount,
-    fetchEpisodes
+    fetchEpisodes,
 }

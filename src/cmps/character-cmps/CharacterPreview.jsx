@@ -16,18 +16,18 @@ export const CharacterPreview = ({ character, onToggleModal, onSelectedCharcter 
     }, [character]);
 
     return (
-        <section className="character-preview flex align-center "
+        <section className="character-preview cards"
             onClick={() => {
                 onSelectedCharcter(getSelectedCharcter)
             }}>
             <div className="character-img">
                 <img src={image} alt={name} />
             </div>
-            <span>{name}</span>
-            <span>{origin.name}</span>
-            <span>{status}</span>
-            <span>{species}</span>
-            <span>{gender}</span>
+            <span className="name">{name}</span>
+            <span className="origin">{origin.name}</span>
+            <span className="status">{status}</span>
+            <span className="species">{species}</span>
+            <span className="gender">{gender}</span>
         </section >
     )
 }

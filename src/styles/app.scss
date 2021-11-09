@@ -2,3 +2,9 @@
     height: 100vh;
     overflow-x: hidden;
 }
+.main-layout {
+    padding-inline: 8vw;
+    @include for-mobile-layout {
+        padding-inline: 4vw;
+    }
+}

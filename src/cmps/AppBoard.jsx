@@ -5,8 +5,9 @@ import { utilService } from "../services/utils"
 import { AppFilter } from "./AppFilter"
 import { CharacterList } from "./character-cmps/CharacterList"
 import { BasicModal } from "./Modal"
+import { Loader } from "./Loader"
 
-export const AppBoard = () => {
+export const AppBoard = ({ view }) => {
     const [characters, setCharcters] = useState(null)
     const [selectedCharcter, setSelectedCharcter] = useState(null)
     const [page, setPage] = useState(1)
@@ -33,7 +34,6 @@ export const AppBoard = () => {
         }
         setFilterBy(filter)
     }
-    // const debouncedSetFilter = useCallback(utilService.debounce(onSetFilter, 300), []);
 
     const onSetPage = (event, value) => {
         setPage(value);
@@ -65,9 +65,16 @@ export const AppBoard = () => {
         loadCharacters(page)
     }, [page])
 
-    if (!characters.length) return <h1>Loading</h1>
+    useEffect(() => {
+        loadCharacters(view)
+    }, [view])
+
+
+
+    if (!characters?.length) return <Loader />
     return (
         <section className="app-board flex column gap">
+
             <AppFilter
                 onSetFilter={onSetFilter}
                 clearFilter={clearFilter}

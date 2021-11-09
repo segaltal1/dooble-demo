@@ -1,3 +1,4 @@
+import { useCallback, useEffect, useState } from 'react'
 import {
     FormControl,
     IconButton,
@@ -6,8 +7,19 @@ import {
     Select,
     TextField
 } from '@material-ui/core'
+import { utilService } from '../services/utils'
 
 export const AppFilter = ({ onSetFilter, filterBy, clearFilter }) => {
+    const [name, setName] = useState('')
+    const handleChange = ({ target }) => {
+        setName(target.value)
+    }
+
+    const debouncedSetFilter = useCallback(utilService.debounce(onSetFilter, 300), []);
+
+    useEffect(() => {
+        debouncedSetFilter({ target: { name: 'name', value: name } })
+    }, [name])
 
     return (
         <section className="app-filter flex  column gap">
@@ -17,14 +29,14 @@ export const AppFilter = ({ onSetFilter, filterBy, clearFilter }) => {
                     label="Search"
                     variant="outlined"
                     name="name"
-                    value={filterBy.name}
+                    value={name}
                     style={{
                         backgroundColor: "transparent",
                         color: "#333333",
                         borderRadius: 5,
                         width: "100%"
                     }}
-                    onChange={onSetFilter}
+                    onChange={handleChange}
                 />
 
             </div>
@@ -78,7 +90,10 @@ export const AppFilter = ({ onSetFilter, filterBy, clearFilter }) => {
                 </FormControl>
                 <IconButton
                     className="icon-clear"
-                    onClick={clearFilter}
+                    onClick={() => {
+                        setName('')
+                        clearFilter()
+                    }}
                     name="clear"
                     style={{
                         color: '#fefefe',

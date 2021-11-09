@@ -4,6 +4,11 @@
         gap: 10px;
     }
     .search-selections {
+        .MuiButtonBase-root {
+            padding: 0.7rem !important;
+            font-size: 0.8rem !important;
+            flex-basis: 0.25%;
+        }
         .MuiInputLabel-animated {
             padding-inline-start: 10px;
         }
